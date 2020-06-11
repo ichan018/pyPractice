@@ -4,29 +4,23 @@ This file, given a name entered by the user and the current date, prints out a l
 """
 
 import datetime
-thePwd = (1,7,6)
+thePwd = [1,7,6]#change from tuple to list
 
 MAX_NUM = 3
-numInTuple = 3
+numInList = 3
 
 #print("Hello world")
 def check_pwd():
    
-   currTuple = ();
+   currList = [];
 
    print("Enter 3 integers")
-   for x in range(numInTuple):
-       newTupleInput = int(input(""));
-
-       newTuple = (newTupleInput,)
-       currTuple = currTuple + newTuple
-
+   for x in range(numInList): currList.append(int(input("")))
   
    #compare tuples
    isPwd = 1
-   for x in range(len(currTuple)):
-       if currTuple[x] != thePwd[x]:
-          isPwd = 0
+   for x in range(len(currList)):
+       if (currList[x] != thePwd[x]): isPwd = 0
    return isPwd;
     
 def EnterPwd(): #FIX INDENTATION!
@@ -39,10 +33,8 @@ def EnterPwd(): #FIX INDENTATION!
     #numInTuple = int(input("How many values do you want in the tuple?"))
     #numInTuple = 3;
 
-    if check_pwd() == 1:
-        print("Correct password")
-    else:
-        print("Wrong password")
+    if check_pwd() == 1: print("Correct password")
+    else: print("Wrong password")
 
 
 #begin program
@@ -60,13 +52,10 @@ while (ifContinue == 1):
         print("1.Add user") #ADD FUNCTIONALITY LATER
         loginVal = int(input(""))
    
-    if(loginVal == -1):
-        ifContinue = 0;
+    if(loginVal == -1): ifContinue = 0;
     #begin if loop
     if(ifContinue == -1): #program not ended by user pressing exit key
-        if (loginVal == 0):
-            
-            EnterPwd();
+        if (loginVal == 0): EnterPwd();
         elif(loginVal == 1):
             print("Creation of part2 in progress")
             print("Checkin later")
