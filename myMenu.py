@@ -14,59 +14,47 @@ userList = []
 
 
 class User:
-    def __init__(self,userName,listPwd):
+    def __init__(self,userName,pwd):
         self.userName = userName;
-        self.pwd = listPwd;
+        self.pwd = pwd;
 
-    
+    def GetUserName(self):
+        return self.userName;
+    def GetPwd(self):
+        return self.pwd;
+
+
 
 
 #print("Hello world")
-def check_pwd():
+def check_pwd(myName, myPwd):
    #check if user isn't here
    #isn't here: isPwd = 0;else isPwd = 1; (in progress)
    isHere = 0;
-   for x in userList:
-       print("Hi. Add user first");
-
-   #if(isHere == 0):return isPwd;
+   for x in range(len(userList)):
+       #print("Hi. Add user first");
+       if((userList[x].GetUserName()== myName) and (userList[x].GetPwd() == myPwd)):
+           isPwd = 1;
+       else:
+           isPwd = 0;
    
-
-   currList = [];
-
-   print("Enter 3 integers")
-   for x in range(NUM_IN_PWD): currList.append(int(input("")))
-  
-   #compare tuples
-   isPwd = 1
-   for x in range(len(currList)):
-       if (currList[x] != thePwd[x]): isPwd = 0
+   
+   print("make check pwd function after userList is read")
    return isPwd;
     
 def EnterPwd(): #FIX INDENTATION!
-    myName = input("Enter your name")
+    myName = input("Enter your name:")
 
-    #w = datetime.date.today();
-    # myLine = "On {}, {} did something fun."
-    #print(myLine.format(w, myName))
+    myPwd = int(input("Enter integer password:"))
 
-    #numInTuple = int(input("How many values do you want in the tuple?"))
-    #numInTuple = 3;
-
-    if check_pwd() == 1: print("Correct password")
+    if check_pwd(myName, myPwd) == 1: print("Correct password")
     else: print("Wrong password")
 
 def AddUser():
-    print("Adding user")
-    print("Enter a ")
-    print( NUM_IN_PWD)
-    print("-digit number" )
-    newPwd = [];
-    for x in range(NUM_IN_PWD):
-        #create password
-        newNum = int(input(""))
-        newPwd.append(newNum);
-    newUser = User(input("Enter username:"), newPwd)
+    
+    newUser = User(input("Enter username: "), newPwd)
+
+    newPwd = int(input("Enter an integer password: "));
     userList.append(newUser)
 
 
