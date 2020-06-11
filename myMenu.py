@@ -6,16 +6,36 @@ This file, given a name entered by the user and the current date, prints out a l
 import datetime
 thePwd = [1,7,6]#change from tuple to list
 
-MAX_NUM = 3
-numInList = 3
+NUM_OF_CHOICES = 3 #CHANGE ALL INSTANCES OF Max_NUM to NUm_OF_CHOICES
+NUM_IN_PWD = 3 #change num_in_list to num_in_pwd
+
+userList = []
+
+
+
+class User:
+    def __init__(self,userName,listPwd):
+        self.userName = userName;
+        self.pwd = listPwd;
+
+    
+
 
 #print("Hello world")
 def check_pwd():
+   #check if user isn't here
+   #isn't here: isPwd = 0;else isPwd = 1; (in progress)
+   isHere = 0;
+   for x in userList:
+       print("Hi. Add user first");
+
+   #if(isHere == 0):return isPwd;
    
+
    currList = [];
 
    print("Enter 3 integers")
-   for x in range(numInList): currList.append(int(input("")))
+   for x in range(NUM_IN_PWD): currList.append(int(input("")))
   
    #compare tuples
    isPwd = 1
@@ -36,6 +56,19 @@ def EnterPwd(): #FIX INDENTATION!
     if check_pwd() == 1: print("Correct password")
     else: print("Wrong password")
 
+def AddUser():
+    print("Adding user")
+    print("Enter a ")
+    print( NUM_IN_PWD)
+    print("-digit number" )
+    newPwd = [];
+    for x in range(NUM_IN_PWD):
+        #create password
+        newNum = int(input(""))
+        newPwd.append(newNum);
+    newUser = User(input("Enter username:"), newPwd)
+    userList.append(newUser)
+
 
 #begin program
 #begin continuous loop
@@ -45,7 +78,7 @@ while (ifContinue == 1):
     #ifContInput = "@";
 
     loginVal = -2
-    while (not(loginVal >= -1 and (loginVal + 2) <= MAX_NUM)):
+    while (not(loginVal >= -1 and (loginVal + 2) <= NUM_OF_CHOICES)):
         print("Welcome to Ivan's Server. What would you like to do?")
         print("-1: Exit")
         print("0. Login")
@@ -53,12 +86,11 @@ while (ifContinue == 1):
         loginVal = int(input(""))
    
     if(loginVal == -1): ifContinue = 0;
+
     #begin if loop
     if(ifContinue == -1): #program not ended by user pressing exit key
         if (loginVal == 0): EnterPwd();
-        elif(loginVal == 1):
-            print("Creation of part2 in progress")
-            print("Checkin later")
+        elif(loginVal == 1):AddUser();
         #end of while function
 
         #checkifcontinue (fix)
