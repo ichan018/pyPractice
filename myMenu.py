@@ -1,8 +1,8 @@
 
-"""
-This file, given a name entered by the user and the current date, prints out a line of code with such information.
-"""
 
+#This file, given a name entered by the user and the current date, prints out a line of code with such information
+
+from tkinter import *
 import datetime
 thePwd = [1,7,6]#change from tuple to list
 
@@ -23,6 +23,29 @@ class User:
     def GetPwd(self):
         return self.pwd;
 
+def UserLoc(userName):
+    for x in range(len(userList)):
+        if (userList[x].GetUserName() == userName):
+            return x;
+    return -1;
+ 
+
+def StartMenu(theName):
+    optionStart = 0
+    while (optionStart < 1 or optionStart > 2):
+        print("What would you like to do?")
+        print("1: Get user name")
+        print("2: Change Password")
+        optionStart = int(input(""));
+        if (optionStart == 1):
+            print("User name is:")
+            findLoc = int(UserLoc(theName))
+            if findLoc >= 0:
+                print(userList[findLoc].GetUserName() )
+        elif optionStart == 2:
+            print("To do: Change pwd");
+        else:
+            print("Invalid option. Try again.")
 
 
 
@@ -45,16 +68,23 @@ def check_pwd(myName, myPwd):
 def EnterPwd(): #FIX INDENTATION!
     myName = input("Enter your name:")
 
-    myPwd = int(input("Enter integer password:"))
+    #myPwd = int(input("Enter integer password:"))
+    myPwd = input("Enter password") #allow pwd with chars
 
-    if check_pwd(myName, myPwd) == 1: print("Correct password")
+    if check_pwd(myName, myPwd) == 1: 
+        print("Correct password")
+        StartMenu(myName);
     else: print("Wrong password")
 
 def AddUser():
-    
-    newUser = User(input("Enter username: "), newPwd)
+    #add userName
+    newUserName = input("Enter username: ");
+    #newPwd = int(input("Enter an integer password: "));
+    newPwd = input("Enter a password: ")
 
-    newPwd = int(input("Enter an integer password: "));
+    newUser = User(newUserName, newPwd)
+
+    #newPwd = int(input("Enter an integer password: "));
     userList.append(newUser)
 
 
