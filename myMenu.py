@@ -2,7 +2,9 @@
 
 #This file, given a name entered by the user and the current date, prints out a line of code with such information
 
-from tkinter import *
+#from tkinter import *
+from doctest import testmod
+
 import datetime
 thePwd = [1,7,6]#change from tuple to list
 
