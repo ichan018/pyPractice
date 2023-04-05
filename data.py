@@ -21,6 +21,8 @@ class User:
         return self.userName;
     def GetPwd(self):
         return self.pwd;
+    def SetPwd(self,newPwd):
+        self.pwd = newPwd
 
 # MakeUserList() is called once, at beginning of program
 # ensures modules work
@@ -52,13 +54,19 @@ def StartMenu(theName):
         print("1: Get user name")
         print("2: Change Password")
         optionStart = int(input(""));
+
+        findLoc = int(UserLoc(theName))
         if (optionStart == 1):
             print("User name is:")
-            findLoc = int(UserLoc(theName))
+            #findLoc = int(UserLoc(theName))
             if findLoc >= 0:
                 print(userList[findLoc].GetUserName() )
         elif optionStart == 2:
-            print("To do: Change pwd");
+            #print("To do: Change pwd");
+            if findLoc >= 0:
+                newPwd = input("Enter new password: ")
+                userList[findLoc].SetPwd(newPwd)
+            
         else:
             print("Invalid option. Try again.")
 
