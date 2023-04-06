@@ -43,7 +43,9 @@ NUM_OF_CHOICES = 3;
 
 
 #print("Hello world")
-def check_pwd(myName, myPwd):
+#def check_pwd(myName, myPwd):
+def check_info(myName, myPwd):
+
    #check if user isn't here
    isPwd = -1
    isHere = 0
@@ -51,25 +53,32 @@ def check_pwd(myName, myPwd):
    for x in range(GetRangeUserList()): 
     #print("Hi. Add user first");
        #if((userList[x].GetUserName()== myName) and (userList[x].GetPwd() == myPwd)):
-       if((GetUserList(x).GetUserName() == myName) and (GetUserList(x).GetPwd() == myPwd)):
-           isPwd = 1;
+       #if((GetUserList(x).GetUserName() == myName) and (GetUserList(x).GetPwd() == myPwd)):
+       if(GetUserList(x).GetUserName() == myName):
+           if(GetUserList(x).GetPwd() == myPwd): 
+               isPwd = 2
+           else:
+               isPwd = 1 # wrong password
        else:
            isPwd = 0;
    
    
-   print("make check pwd function after userList is read")
+   #print("make check pwd function after userList is read")
    return isPwd;
     
-def EnterPwd(): #FIX INDENTATION!
+def UserLogin(): #FIX INDENTATION!
     myName = input("Enter your name:")
 
     #myPwd = int(input("Enter integer password:"))
     myPwd = input("Enter password") #allow pwd with chars
 
-    if check_pwd(myName, myPwd) == 1: 
+    if check_info(myName, myPwd) == 2: 
         print("Correct password")
-        StartMenu(myName);
-    else: print("Wrong password")
+        StartMenu(myName)
+    elif check_info(myName,myPwd) == 1:
+        print("Wrong password, try again")
+    else: 
+        print("User not found, try again")
 
 def AddUser():
     #add userName
@@ -90,7 +99,7 @@ def AddUser():
 
 ifContinue = 1
 while (ifContinue == 1):
-    ifContinue = -1
+    #ifContinue = -1
     #ifContInput = "@";
 
     loginVal = -2
@@ -104,13 +113,14 @@ while (ifContinue == 1):
     if(loginVal == -1): ifContinue = 0;
 
     #begin if loop
-    if(ifContinue == -1): #program not ended by user pressing exit key
-        if (loginVal == 0): EnterPwd();
+    if(ifContinue == 1): #program not ended by user pressing exit key
+        if (loginVal == 0): UserLogin();
         elif(loginVal == 1):AddUser();
+        elif(loginVal == -1): ifContinue = 0
         #end of while function
 
         #checkifcontinue (fix)
         #Create variable for testing continue
-        while(not(ifContinue == 1 or ifContinue == 0)):
-           ifContinue = int(input("Do you want to continue (yes = '1', no = '0')?"))
+        #while(not(ifContinue == 1 or ifContinue == 0)):
+           #ifContinue = int(input("Do you want to continue (yes = '1', no = '0')?"))
        #end if loop

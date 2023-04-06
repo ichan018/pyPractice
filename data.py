@@ -53,6 +53,7 @@ def StartMenu(theName):
         print("What would you like to do?")
         print("1: Get user name")
         print("2: Change Password")
+        print("3: Exit")
         optionStart = int(input(""));
 
         findLoc = int(UserLoc(theName))
@@ -66,7 +67,14 @@ def StartMenu(theName):
             if findLoc >= 0:
                 newPwd = input("Enter new password: ")
                 userList[findLoc].SetPwd(newPwd)
-            
+        elif optionStart == 3:
+            print("Logging out of session")
+            print("Exiting")
+            break
+            #TODO: EXIT PROGRAM
+         
         else:
             print("Invalid option. Try again.")
+        
+        optionStart = 1 # continue loop until user ends program
 
